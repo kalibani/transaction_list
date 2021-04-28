@@ -5,19 +5,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './styles.scss';
 
-const Text = ({ propsName }) => (
-  <div>
-    Functional Component (Stateless Component)
+const Text = ({ children }) => (
+  <div className="a-text">
+    {children}
   </div>
 
 );
 
 Text.propTypes = {
-  propsName: PropTypes.string
+  children: PropTypes.string
 };
 
 Text.defaultProps = {
-  propsName: ''
+  children: ''
 };
 
 export default Text;

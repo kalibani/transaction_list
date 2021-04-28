@@ -1,11 +1,16 @@
 /* ==========================================================================
-Styles for Login component
+Styles for Transactions component
 ========================================================================== */
 
 // import mixin and variables, function
 @import "../../../assets/styles/function", "../../../assets/styles/mixin", "../../../assets/styles/variables";
 
-// Start styles Login component
-.p-login {
-
+// Start styles Transactions component
+.p-transactions {
+  .p-transactions-header {
+    text-align: center;
+  }
+  .p-transactions-greetings {
+    text-align: left;
+  }
 }

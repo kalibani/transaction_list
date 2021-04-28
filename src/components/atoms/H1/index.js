@@ -5,19 +5,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './styles.scss';
 
-const H1 = ({ propsName }) => (
-  <div>
-    Functional Component (Stateless Component)
-  </div>
+const H1 = ({ children }) => (
+  <h1 className="a-h1">
+    {children}
+  </h1>
 
 );
 
 H1.propTypes = {
-  propsName: PropTypes.string
+  children: PropTypes.string
 };
 
 H1.defaultProps = {
-  propsName: ''
+  children: ''
 };
 
 export default H1;

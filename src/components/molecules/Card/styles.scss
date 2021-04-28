@@ -7,5 +7,43 @@ Styles for Card component
 
 // Start styles Card component
 .m-card {
+  display: flex;
+  background-color: $white;
+  border-radius: 4px;
+  .m-card-indicator {
+    &.success {
+      background-color: $green;
+      width: 10px;
+      border-radius: 5px 0 0 5px;
+    }
+    &.pending {
+      background-color: $orange;
+      width: 5px;
+      border-radius: 4px 0 0 4px;
+    }
 
+  }
+  .m-card-container-left {
+    font-size: 14px;
+    margin: 10px;
+    width: 100%;
+  }
+  .m-card-container-right {
+    font-size: 12px;
+    width: 100%;
+    position: relative;
+    margin: 10px;
+    .m-card-status {
+      padding: 5px 25px;
+      color: $white;
+      border-radius: 4px;
+      position: absolute;
+      right: 0;
+      top: 30%;
+      &.success {
+        background-color: $green;
+        text-align: center;
+      }
+    }
+  }
 }

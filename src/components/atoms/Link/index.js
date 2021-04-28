@@ -3,21 +3,51 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { handlePreload } from 'utils/helper';
+import AppRoutes from 'container/config';
 import './styles.scss';
 
-const Link = ({ propsName }) => (
-  <div>
-    Functional Component (Stateless Component)
-  </div>
-
+const Links = ({
+  className,
+  to,
+  target,
+  onClick,
+  tabIndex,
+  children
+}) => (
+  <>
+    <Link
+      to={to}
+      className={className}
+      target={target}
+      onClick={onClick}
+      // trigger preload function
+      onMouseOver={() => handlePreload(to, AppRoutes)}
+      onFocus={() => handlePreload(to, AppRoutes)}
+      tabIndex={tabIndex}
+    >
+      {children}
+    </Link>
+  </>
 );
 
-Link.propTypes = {
-  propsName: PropTypes.string
+Links.propTypes = {
+  className: PropTypes.string,
+  to: PropTypes.string,
+  target: PropTypes.string,
+  tabIndex: PropTypes.string,
+  onClick: PropTypes.func,
+  children: PropTypes.node
 };
 
-Link.defaultProps = {
-  propsName: ''
+Links.defaultProps = {
+  className: '',
+  to: '',
+  target: '_self',
+  tabIndex: '0',
+  onClick: () => {},
+  children: ''
 };
 
-export default Link;
+export default Links;
