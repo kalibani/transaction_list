@@ -1,0 +1,30 @@
+@import './variables.scss', './function.scss', './mixin.scss';
+
+html {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+body {
+  font-family: $ff-main;
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 1.6;
+  color: $black;
+  letter-spacing: normal;
+  background-color: $cloud;
+  margin: 0;
+  overflow: hidden;
+
+  @include small {
+    overflow: auto;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+}

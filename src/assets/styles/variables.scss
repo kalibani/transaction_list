@@ -1,0 +1,22 @@
+// Font Family
+$ff-main: "Lato", sans-serif;
+
+// color
+$black: #000000;
+$cloud: #f3f7f9;
+$white: #ffffff;
+$green: #56b586;
+$orange: #fd6542;
+
+// z-index
+$z-popup: 13;
+$z-popup-double: 15;
+
+// screen
+$screen: (
+  large: 1440px,
+  medium: 1024px,
+  small: 896px,
+  phone: 480px,
+  iphone5: 320px
+);

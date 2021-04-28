@@ -1,0 +1,11 @@
+@mixin small {
+  @media only screen and (max-width: screen(small)) {
+    @content;
+  }
+}
+
+@mixin iphone5 {
+  @media only screen and (max-width: screen(iphone5)) {
+    @content;
+  }
+}
