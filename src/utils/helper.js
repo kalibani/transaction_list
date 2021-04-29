@@ -20,3 +20,18 @@ export const handlePreload = (path, routes) => {
     component.preload();
   }
 };
+export const formatDate = (date) => {
+  const d = new Date(date);
+  const years = new Intl.DateTimeFormat('id', { year: 'numeric' }).format(d);
+  const month = new Intl.DateTimeFormat('id', { month: 'short' }).format(d);
+  const days = new Intl.DateTimeFormat('id', { day: '2-digit' }).format(d);
+  const formatted = `${days} ${month} ${years}`;
+  return formatted;
+};
+
+export const formatAmount = (amount) => {
+  const numberString = amount.toString();
+  const formatted = numberString.replace(/(\d)(?=(\d{3})+$)/g, '$&.');
+
+  return `Rp${formatted}`;
+};

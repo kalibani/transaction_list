@@ -5,13 +5,15 @@ import {
   SET_LOADING,
   CLEAR_ERROR,
   SET_ERROR,
-  SET_DATA
+  SET_DATA,
+  SET_AMOUNT
 } from 'stores/actions/Transactions';
 
 const initialState = {
   isLoading: false,
   error: {},
-  transactions: []
+  transactions: [],
+  totalAmount: 0
 };
 
 export default (state = initialState, { payload, type }) => {
@@ -35,6 +37,11 @@ export default (state = initialState, { payload, type }) => {
       return {
         ...state,
         transactions: payload
+      };
+    case SET_AMOUNT:
+      return {
+        ...state,
+        totalAmount: payload
       };
     default:
       return state;

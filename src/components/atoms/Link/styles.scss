@@ -7,5 +7,8 @@ Styles for Link component
 
 // Start styles Link component
 .a-link {
+  text-decoration: none;
+  color: $black;
+  transition: color .25s ease;
 
 }

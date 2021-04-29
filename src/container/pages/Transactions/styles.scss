@@ -12,5 +12,8 @@ Styles for Transactions component
   }
   .p-transactions-greetings {
     text-align: left;
+    .p-transactions-amount {
+      color: $orange;
+    }
   }
 }

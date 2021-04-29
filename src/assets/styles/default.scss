@@ -12,7 +12,6 @@ body {
   letter-spacing: normal;
   background-color: $cloud;
   margin: 0;
-  overflow: hidden;
 
   @include small {
     overflow: auto;

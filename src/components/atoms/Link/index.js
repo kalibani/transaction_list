@@ -42,7 +42,7 @@ Links.propTypes = {
 };
 
 Links.defaultProps = {
-  className: '',
+  className: 'a-link',
   to: '',
   target: '_self',
   tabIndex: '0',

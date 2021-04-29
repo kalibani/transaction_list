@@ -10,6 +10,8 @@ Styles for Card component
   display: flex;
   background-color: $white;
   border-radius: 4px;
+  margin: 15px 10px;
+
   .m-card-indicator {
     &.success {
       background-color: $green;
@@ -18,7 +20,7 @@ Styles for Card component
     }
     &.pending {
       background-color: $orange;
-      width: 5px;
+      width: 10px;
       border-radius: 4px 0 0 4px;
     }
 
@@ -42,6 +44,12 @@ Styles for Card component
       top: 30%;
       &.success {
         background-color: $green;
+        text-align: center;
+      }
+      &.pending {
+        background-color: $white;
+        color: $black;
+        border: 1px $orange solid;
         text-align: center;
       }
     }
