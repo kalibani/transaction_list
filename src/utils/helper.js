@@ -23,7 +23,7 @@ export const handlePreload = (path, routes) => {
 export const formatDate = (date) => {
   const d = new Date(date);
   const years = new Intl.DateTimeFormat('id', { year: 'numeric' }).format(d);
-  const month = new Intl.DateTimeFormat('id', { month: 'short' }).format(d);
+  const month = new Intl.DateTimeFormat('id', { month: 'long' }).format(d);
   const days = new Intl.DateTimeFormat('id', { day: '2-digit' }).format(d);
   const formatted = `${days} ${month} ${years}`;
   return formatted;
