@@ -6,13 +6,15 @@ import {
   CLEAR_ERROR,
   SET_ERROR,
   SET_DATA,
-  SET_AMOUNT
+  SET_AMOUNT,
+  SET_DATA_MASTER
 } from 'stores/actions/Transactions';
 
 const initialState = {
   isLoading: false,
   error: {},
   transactions: [],
+  dataMaster: [],
   totalAmount: 0
 };
 
@@ -32,6 +34,11 @@ export default (state = initialState, { payload, type }) => {
       return {
         ...state,
         error: {}
+      };
+    case SET_DATA_MASTER:
+      return {
+        ...state,
+        dataMaster: payload
       };
     case SET_DATA:
       return {

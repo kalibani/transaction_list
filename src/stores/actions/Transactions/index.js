@@ -8,6 +8,7 @@ export const CLEAR_ERROR = 'transactions/CLEAR_ERROR';
 export const SET_ERROR = 'transactions/SET_ERROR';
 export const SET_DATA = 'transactions/SET_DATA';
 export const SET_AMOUNT = 'transactions/SET_AMOUNT';
+export const SET_DATA_MASTER = 'transactions/SET_DATA_MASTER';
 
 export const fetchTransactions = () => async (dispatch) => {
   try {
@@ -26,9 +27,20 @@ export const fetchTransactions = () => async (dispatch) => {
     });
     dispatch({ type: SET_AMOUNT, payload: totalAmount });
     dispatch({ type: SET_DATA, payload: data });
+    dispatch({ type: SET_DATA_MASTER, payload: data });
   } catch (error) {
     dispatch({ type: SET_ERROR, payload: error });
   } finally {
     dispatch({ type: SET_LOADING, payload: false });
+  }
+};
+
+export const onFilterTransactions = (transactions, query) => async (dispatch, getState) => {
+  const data = getState().Transactions.dataMaster;
+  const filteredTransactions = transactions.filter((item) => query.toLowerCase().split(' ').every((v) => item.beneficiary_name.toLowerCase().includes(v) || item.sender_bank.toLowerCase().includes(v) || item.beneficiary_bank.toLowerCase().includes(v)));
+  if (!query) {
+    dispatch({ type: SET_DATA, payload: data });
+  } else {
+    dispatch({ type: SET_DATA, payload: filteredTransactions });
   }
 };

@@ -1,28 +1,39 @@
 // Login Component
 // --------------------------------------------------------
 
-import { useEffect } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import Landing from 'container/templates';
 import {
-  H1, H2, Text, Card, Link
+  H1, H2, Text, Card, Link, InputDropdown
 } from 'components';
-import { fetchTransactions } from 'stores/actions/Transactions';
+import { fetchTransactions, onFilterTransactions } from 'stores/actions/Transactions';
 import { formatAmount } from 'utils/helper';
 import './styles.scss';
 
 const Transactions = () => {
+  const [value, setValue] = useState('');
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchTransactions());
-  // Safe to add dispatch to the dependencies array
   }, [dispatch]);
 
   const { transactions, totalAmount } = useSelector(({ Transactions }) => ({
     transactions: Transactions.transactions,
     totalAmount: Transactions.totalAmount
   }), shallowEqual);
+
+  const handleFilter = useCallback(
+    (transactions, value) => dispatch(onFilterTransactions(transactions, value)),
+    [dispatch]
+  );
+
+  const handleChange = (e) => {
+    setValue(e.target.value);
+
+    handleFilter(transactions, e.target.value);
+  };
 
   return (
     <Landing>
@@ -34,6 +45,7 @@ const Transactions = () => {
           <H2>Halo Kak!</H2>
           <Text>Kamu telah melakukan transaksi sebesar <span className="p-transactions-amount">{formatAmount(totalAmount)}</span> sejak menggunakan Flip.</Text>
         </div>
+        <InputDropdown onChange={handleChange} value={value} />
         <div className="p-transactions-content">
           <>
             {

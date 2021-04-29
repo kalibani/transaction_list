@@ -13,7 +13,7 @@ const Text = ({ children }) => (
 );
 
 Text.propTypes = {
-  children: PropTypes.string
+  children: PropTypes.node
 };
 
 Text.defaultProps = {

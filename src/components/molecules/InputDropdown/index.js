@@ -1,23 +1,65 @@
 // InputDropdown Component
 // --------------------------------------------------------
 
-import React from 'react';
 import PropTypes from 'prop-types';
 import './styles.scss';
 
-const InputDropdown = ({ propsName }) => (
-  <div>
-    Functional Component (Stateless Component)
-  </div>
+const InputDropdown = ({
+  id,
+  type,
+  name,
+  value,
+  placeholder,
+  onChange,
+  input,
+  className
+}) => (
+  <>
+    <input
+      className={className}
+      id={id}
+      type={type}
+      name={name}
+      value={value}
+      placeholder={placeholder}
+      onChange={onChange}
+      {...input}
+    />
 
+  </>
 );
 
 InputDropdown.propTypes = {
-  propsName: PropTypes.string
+  id: PropTypes.string,
+  type: PropTypes.oneOf([
+    'text',
+    'password',
+    'email',
+    'tel',
+    'number',
+    'textarea',
+    'masking',
+    ''
+  ]),
+  name: PropTypes.string,
+  value: PropTypes.string,
+  placeholder: PropTypes.string,
+  onChange: PropTypes.func,
+  className: PropTypes.string,
+  inputMode: PropTypes.string,
+  input: PropTypes.object
 };
 
 InputDropdown.defaultProps = {
-  propsName: ''
+  id: '',
+  type: 'text',
+  name: '',
+  value: '',
+  placeholder: '',
+  onChange: () => {},
+  className: 'm-input-dropdown',
+  inputMode: 'text',
+  input: {}
 };
 
 export default InputDropdown;
