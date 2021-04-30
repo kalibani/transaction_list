@@ -7,5 +7,68 @@ Styles for TransactionDetail component
 
 // Start styles TransactionDetail component
 .p-transaction-detail {
+  .p-transaction-header {
+    text-align: center;
+  }
+  .p-transaction-title {
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    background-color: $white;
+    border-radius: 4px;
+    margin: 15px 10px;
+    font-size: 14px;
+    .p-transaction-id {
+      font-weight: 600;
+    }
 
+    .p-transaction-status {
+      padding: 5px 25px;
+      color: $white;
+      border-radius: 4px;
+      &.success {
+        background-color: $green;
+        text-align: center;
+      }
+      &.pending {
+        background-color: $white;
+        color: $black;
+        border: 1px $orange solid;
+        text-align: center;
+      }
+    }
+  }
+
+  .p-transaction-content {
+    background-color: $white;
+    font-size: 14px;
+    display: flex;
+    padding: 15px 20px;
+    margin: 5px 10px;
+    border-radius: 4px;
+
+    .p-transaction-logo {
+      margin: 0px 36px 20px 10px;
+      font-size: 3rem;
+      color: $orange;
+    }
+
+    .p-transaction-wrapper {
+      margin-bottom: 20px;
+      margin-top: 10px;
+      line-height: 1.5;
+      .p-transaction-text {
+        font-weight: 600;
+      }
+
+      .p-transaction-unique_code {
+        font-size: 12px;
+        font-weight: 600;
+        span {
+          font-weight: 400;
+        }
+      }
+    }
+  }
 }

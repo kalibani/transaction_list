@@ -1,4 +1,4 @@
-// Login Component
+// Transactions Component
 // --------------------------------------------------------
 
 import { useEffect, useState, useCallback } from 'react';
@@ -42,9 +42,9 @@ const Transactions = () => {
   );
 
   const handleSelect = (e) => {
-    setSelected(e.target.value);
+    setSelected(e);
 
-    handleSort(transactions, e.target.value);
+    handleSort(transactions, e);
   };
 
   return (
@@ -57,13 +57,22 @@ const Transactions = () => {
           <H2>Halo Kak!</H2>
           <Text>Kamu telah melakukan transaksi sebesar <span className="p-transactions-amount">{formatAmount(totalAmount)}</span> sejak menggunakan Flip.</Text>
         </div>
-        <InputDropdown onChange={handleChange} value={value} onSelected={handleSelect} selected={selected} />
+        <InputDropdown
+          placeholder="Cari nama atau bank"
+          onChange={handleChange}
+          value={value}
+          onSelected={handleSelect}
+          selected={selected}
+        />
         <div className="p-transactions-content">
           <>
             {
               transactions.map((element, index) => (
                 <Link
-                  to={`${element.id}`}
+                  to={{
+                    pathname: `/${element.id}`,
+                    query: element
+                  }}
                   key={index}
                 >
                   <Card data={element} />

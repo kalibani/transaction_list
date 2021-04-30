@@ -1,15 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { createBrowserHistory } from 'history';
-import {
-  requestInterceptors,
-  responseInterceptors
-} from 'middleware/interceptors';
 import rootReducer from './reducers';
-
-// axios interceptors
-requestInterceptors();
-responseInterceptors();
 
 export const history = createBrowserHistory({});
 

@@ -4,8 +4,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { handlePreload } from 'utils/helper';
-import AppRoutes from 'container/config';
 import './styles.scss';
 
 const Links = ({
@@ -22,9 +20,6 @@ const Links = ({
       className={className}
       target={target}
       onClick={onClick}
-      // trigger preload function
-      onMouseOver={() => handlePreload(to, AppRoutes)}
-      onFocus={() => handlePreload(to, AppRoutes)}
       tabIndex={tabIndex}
     >
       {children}
@@ -34,7 +29,10 @@ const Links = ({
 
 Links.propTypes = {
   className: PropTypes.string,
-  to: PropTypes.string,
+  to: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object
+  ]),
   target: PropTypes.string,
   tabIndex: PropTypes.string,
   onClick: PropTypes.func,

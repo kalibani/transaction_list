@@ -12,9 +12,7 @@ const Button = ({
   onClick,
   disabled,
   children,
-  id,
-  onMouseOver,
-  onFocus
+  id
 }) => {
   const className = `a-button ${variant}`;
   return (
@@ -22,14 +20,11 @@ const Button = ({
       <button
         type="button"
         className={className}
-        onMouseOver={onMouseOver}
-        onFocus={onFocus}
         onClick={onClick}
         tabIndex={tabIndex}
         style={style}
         disabled={disabled}
         id={id}
-        va
       >
         {children}
       </button>
@@ -44,9 +39,7 @@ Button.propTypes = {
   onClick: PropTypes.func,
   disabled: PropTypes.bool,
   children: PropTypes.node,
-  id: PropTypes.string,
-  onMouseOver: PropTypes.func,
-  onFocus: PropTypes.func
+  id: PropTypes.string
 };
 
 Button.defaultProps = {
@@ -56,9 +49,7 @@ Button.defaultProps = {
   disabled: false,
   children: '',
   id: '',
-  onMouseOver: () => {},
-  onClick: () => {},
-  onFocus: () => {}
+  onClick: () => {}
 };
 
 export default Button;

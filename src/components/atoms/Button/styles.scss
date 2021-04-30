@@ -7,5 +7,11 @@ Styles for Button component
 
 // Start styles Button component
 .a-button {
-
+  border: 1px solid $orange;
+  background-color: $cloud;
+  color: $orange;
+  padding: 7px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
 }

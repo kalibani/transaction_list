@@ -7,7 +7,7 @@ import './styles.scss';
 
 const Loader = ({ propsName }) => (
   <div>
-    Functional Component (Stateless Component)
+    {/* Functional Component (Stateless Component) */}
   </div>
 
 );
