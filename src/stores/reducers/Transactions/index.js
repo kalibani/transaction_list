@@ -1,4 +1,4 @@
-// login Reducers
+// Transactions Reducers
 // --------------------------------------------------------
 
 import {
@@ -43,7 +43,7 @@ export default (state = initialState, { payload, type }) => {
     case SET_DATA:
       return {
         ...state,
-        transactions: payload
+        transactions: [...payload]
       };
     case SET_AMOUNT:
       return {

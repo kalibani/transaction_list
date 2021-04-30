@@ -7,12 +7,13 @@ import Landing from 'container/templates';
 import {
   H1, H2, Text, Card, Link, InputDropdown
 } from 'components';
-import { fetchTransactions, onFilterTransactions } from 'stores/actions/Transactions';
+import { fetchTransactions, onFilterTransactions, onSort } from 'stores/actions/Transactions';
 import { formatAmount } from 'utils/helper';
 import './styles.scss';
 
 const Transactions = () => {
   const [value, setValue] = useState('');
+  const [selected, setSelected] = useState('');
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -35,6 +36,17 @@ const Transactions = () => {
     handleFilter(transactions, e.target.value);
   };
 
+  const handleSort = useCallback(
+    (transactions, selected) => dispatch(onSort(transactions, selected)),
+    [dispatch]
+  );
+
+  const handleSelect = (e) => {
+    setSelected(e.target.value);
+
+    handleSort(transactions, e.target.value);
+  };
+
   return (
     <Landing>
       <div className="p-transactions">
@@ -45,11 +57,11 @@ const Transactions = () => {
           <H2>Halo Kak!</H2>
           <Text>Kamu telah melakukan transaksi sebesar <span className="p-transactions-amount">{formatAmount(totalAmount)}</span> sejak menggunakan Flip.</Text>
         </div>
-        <InputDropdown onChange={handleChange} value={value} />
+        <InputDropdown onChange={handleChange} value={value} onSelected={handleSelect} selected={selected} />
         <div className="p-transactions-content">
           <>
             {
-              transactions && transactions.map((element, index) => (
+              transactions.map((element, index) => (
                 <Link
                   to={`${element.id}`}
                   key={index}

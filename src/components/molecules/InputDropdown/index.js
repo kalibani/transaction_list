@@ -12,11 +12,12 @@ const InputDropdown = ({
   placeholder,
   onChange,
   input,
-  className
+  selected,
+  onSelected
 }) => (
-  <>
+  <div className="m-input-dropdown">
     <input
-      className={className}
+      className="m-input"
       id={id}
       type={type}
       name={name}
@@ -25,8 +26,17 @@ const InputDropdown = ({
       onChange={onChange}
       {...input}
     />
+    <div className="select-dropdown">
+      <select name="slct" id="slct" onChange={onSelected} value={selected}>
+        <option value="0">Urutkan</option>
+        <option value="1">Nama A-Z</option>
+        <option value="2">Nama Z-A</option>
+        <option value="3">Tanggal terbaru</option>
+        <option value="4">Tanggal terlama</option>
+      </select>
+    </div>
 
-  </>
+  </div>
 );
 
 InputDropdown.propTypes = {
@@ -45,9 +55,10 @@ InputDropdown.propTypes = {
   value: PropTypes.string,
   placeholder: PropTypes.string,
   onChange: PropTypes.func,
-  className: PropTypes.string,
+  selected: PropTypes.string,
   inputMode: PropTypes.string,
-  input: PropTypes.object
+  input: PropTypes.object,
+  onSelected: PropTypes.func
 };
 
 InputDropdown.defaultProps = {
@@ -57,7 +68,8 @@ InputDropdown.defaultProps = {
   value: '',
   placeholder: '',
   onChange: () => {},
-  className: 'm-input-dropdown',
+  onSelected: () => {},
+  selected: '',
   inputMode: 'text',
   input: {}
 };

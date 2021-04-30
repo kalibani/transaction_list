@@ -35,3 +35,23 @@ export const formatAmount = (amount) => {
 
   return `Rp${formatted}`;
 };
+
+export const sortAsc = (data, field) => data.sort((a, b) => {
+  if (a[field] > b[field]) {
+    return 1;
+  }
+  if (b[field] > a[field]) {
+    return -1;
+  }
+  return 0;
+});
+
+export const sortDesc = (data, field) => data.sort((a, b) => {
+  if (a[field] > b[field]) {
+    return -1;
+  }
+  if (b[field] > a[field]) {
+    return 1;
+  }
+  return 0;
+});

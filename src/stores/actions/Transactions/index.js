@@ -2,6 +2,7 @@
 // --------------------------------------------------------
 
 import getTransactions from 'API';
+import { sortAsc, sortDesc } from 'utils/helper';
 
 export const SET_LOADING = 'transactions/SET_LOADING';
 export const CLEAR_ERROR = 'transactions/CLEAR_ERROR';
@@ -36,11 +37,39 @@ export const fetchTransactions = () => async (dispatch) => {
 };
 
 export const onFilterTransactions = (transactions, query) => async (dispatch, getState) => {
-  const data = getState().Transactions.dataMaster;
-  const filteredTransactions = transactions.filter((item) => query.toLowerCase().split(' ').every((v) => item.beneficiary_name.toLowerCase().includes(v) || item.sender_bank.toLowerCase().includes(v) || item.beneficiary_bank.toLowerCase().includes(v)));
   if (!query) {
+    const data = getState().Transactions.dataMaster;
     dispatch({ type: SET_DATA, payload: data });
   } else {
+    const filteredTransactions = transactions.filter((item) => query.toLowerCase().split(' ').every((v) => item.beneficiary_name.toLowerCase().includes(v) || item.sender_bank.toLowerCase().includes(v) || item.beneficiary_bank.toLowerCase().includes(v)));
     dispatch({ type: SET_DATA, payload: filteredTransactions });
+  }
+};
+
+export const onSort = (transactions, type) => async (dispatch, getState) => {
+  let sorted = '';
+  switch (type) {
+    case '0':
+      sorted = getState().Transactions.dataMaster;
+      dispatch({ type: SET_DATA, payload: sorted });
+      break;
+    case '1':
+      sorted = sortAsc(transactions, 'beneficiary_name');
+      dispatch({ type: SET_DATA, payload: sorted });
+      break;
+    case '2':
+      sorted = sortDesc(transactions, 'beneficiary_name');
+      dispatch({ type: SET_DATA, payload: sorted });
+      break;
+    case '3':
+      sorted = sortAsc(transactions, 'created_at');
+      dispatch({ type: SET_DATA, payload: sorted });
+      break;
+    case '4':
+      sorted = sortDesc(transactions, 'created_at');
+      dispatch({ type: SET_DATA, payload: sorted });
+      break;
+    default:
+      break;
   }
 };
