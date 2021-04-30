@@ -2,6 +2,7 @@
 // --------------------------------------------------------
 import { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
+import { FaSearch } from 'react-icons/fa';
 import './styles.scss';
 import handleClickOutside from 'customHooks';
 
@@ -54,6 +55,9 @@ const InputDropdown = ({
 
   return (
     <div className="m-input-dropdown">
+      <div className="m-input-dropdown-icon">
+        <FaSearch />
+      </div>
       <input
         className="m-input"
         id={id}
