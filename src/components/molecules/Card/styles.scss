@@ -11,6 +11,12 @@ Styles for Card component
   background-color: $white;
   border-radius: 4px;
   margin: 15px 10px;
+  transition: all 0.3s ease;
+  &:hover {
+    box-shadow: 2px 4px 8px rgba(228, 234, 243, 1);
+    transform: scale(1.02);
+  }
+
 
   .m-card-indicator {
     &.success {
