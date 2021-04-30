@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Disale web security in chrome
+## Disale web security / same origin policy in chrome
 heading to [https://stackoverflow.com/questions/3102819/disable-same-origin-policy-in-chrome](stack overflow)
 
 ## Available Scripts
